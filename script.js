@@ -4,16 +4,19 @@ let totalTime = 0;
 let remainingTime = 0;
 
 // Elements
-const timerElement = document.getElementById('timer');
+// const timerElement = document.getElementById('timer');
 const hoursInput = document.getElementById('hours-input');
 const minutesInput = document.getElementById('minutes-input');
 const secondsInput = document.getElementById('seconds-input');
 const startButton = document.getElementById('start-btn');
 const pauseButton = document.getElementById('pause-btn');
 const resetButton = document.getElementById('reset-btn');
-
+// hoursInput.value = "00"
+//     minutesInput.value = "00"
+//     secondsInput.value = "00"
 // Start the timer
 startButton.addEventListener('click', () => {
+  console.log('start ')
   const hours = parseInt(hoursInput.value) || 0;
   const minutes = parseInt(minutesInput.value) || 0;
   const seconds = parseInt(secondsInput.value) || 0;
@@ -44,7 +47,7 @@ resetButton.addEventListener('click', () => {
   resetButton.disabled = true;
   totalTime = 0;
   remainingTime = 0;
-  timerElement.textContent = '00:00:00';
+//   timerElement.textContent = '00:00:00';
   hoursInput.value = '';
   minutesInput.value = '';
   secondsInput.value = '';
@@ -56,15 +59,17 @@ function updateTimer() {
 
   if (remainingTime <= 0) {
     clearInterval(timerInterval);
-    timerElement.textContent = '00:00:00';
+    // timerElement.textContent = '00:00:00';
     startButton.disabled = false;
     pauseButton.disabled = true;
   } else {
     const hours = Math.floor(remainingTime / 3600);
     const minutes = Math.floor((remainingTime % 3600) / 60);
     const seconds = remainingTime % 60;
-
-    timerElement.textContent = formatTime(hours) + ':' + formatTime(minutes) + ':' + formatTime(seconds);
+    hoursInput.value = formatTime(hours)
+    minutesInput.value = formatTime(minutes)
+    secondsInput.value = formatTime(seconds)
+    // timerElement.textContent = formatTime(hours) + ':' + formatTime(minutes) + ':' + formatTime(seconds);
   }
 }
 
@@ -72,3 +77,7 @@ function updateTimer() {
 function formatTime(value) {
   return value < 10 ? '0' + value : value;
 }
+
+// let x = <section>ccccccc </section>
+// console.log(x)
+// console.log(typeof (x))
