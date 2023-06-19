@@ -1,61 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
-  <title>Google Timer</title>
-  <!-- <script src="./script.js"></script> -->
+  <title>Timer</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
+  <div class="timer-container">
+    <h1 id="timer">00:00:00</h1>
+    <div class="buttons">
+      <button id="start-btn">Start</button>
+      <button id="pause-btn">Pause</button>
+      <button id="reset-btn">Reset</button>
+    </div>
+  </div>
 
-  <!-- Main content -->
-  <main>
-    <!-- Header with tabs -->
-    <header>
-      <ul class="timerTabs">
-        <li id="timer" class="activeTab">Timer</li>
-        <li id="stopwatch">Stopwatch</li>
-      </ul>
-    </header>
-
-    <!-- Content section with timer and stopwatch -->
-    <section class="timerContent">
-      <!-- Timer section -->
-      <article id="timerSection">
-        <label for="timerInput" class="timeInputLabel">
-          <span class="hours unit">
-            <span class="num">00</span>
-            <span class="char">h</span>
-          </span>
-          <span class="minutes unit">
-            <span class="num">00</span>
-            <span class="char">m</span>
-          </span>
-          <span class="seconds unit">
-            <span class="num">00</span>
-            <span class="char">s</span>
-          </span>
-        </label>
-        <input type="text" maxlength="6" id="timerInput" value="">
-      </article>
-
-      <!-- Stopwatch section -->
-      <article id="stopwatchSection"></article>
-    </section>
-
-    <!-- Footer with buttons -->
-    <footer>
-      <section class="timerButtons">
-        <button id="playButton" data-state="play">Start</button>
-        <button id="resetButton">Reset</button>
-      </section>
-    </footer>
-  </main>
-
-  <!-- JavaScript file -->
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

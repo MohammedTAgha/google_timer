@@ -1,138 +1,25 @@
-:root {
-    --primary-color: #8ab4f8;
-    --secondary-color: #3c4043;
-    --background-color: #202124;
-    --font-size-small: 11px;
-    --font-size-medium: 14px;
-    --font-size-large: 36px;
-  }
-  
-  * {
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
   }
   
-  body {
-    background-color: var(--background-color);
-    padding: 60px;
+  .timer-container {
+    margin-top: 150px;
   }
   
-  ul {
-    list-style: none;
+  h1#timer {
+    font-size: 48px;
   }
   
-  main {
-    max-width: 700px;
-    border: 1px solid var(--secondary-color);
-    border-radius: 10px;
+  .buttons {
+    margin-top: 20px;
   }
   
-  .timerTabs {
-    display: flex;
-    align-items: center;
+  button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-right: 10px;
   }
   
-  .timerTabs li {
-    width: 50%;
-    text-align: center;
-    padding: 20px 0;
-    color: #80868b;
-    border-bottom: 1px solid var(--secondary-color);
-    text-transform: uppercase;
-    font-size: var(--font-size-small);
-    position: relative;
-  }
-  
-  .activeTab {
-    color: var(--primary-color);
-    font-size: var(--font-size-medium);
-  }
-  
-  .activeTab::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    height: 2px;
-    width: 100%;
-    left: 0;
-    background-color: var(--primary-color);
-  }
-  
-  .timeInputLabel {
-    padding: 5px 12px;
-    margin: 20px 16px;
-    cursor: pointer;
-    display: inline-block;
-    width: fit-content;
-    border-bottom: 1px solid var(--secondary-color);
-    color: #e8eaed;
-  }
-  
-  .timeInputLabel .num {
-    font-size: var(--font-size-large);
-  }
-  
-  .timeInputLabel .char {
-    font-size: var(--font-size-medium);
-    padding-right: 18px;
-  }
-  
-  .unit.hide {
-    display: none;
-  }
-  
-  .unit.unsure {
-    color: #80868b;
-  }
-  
-  #timerInput {
-    width: 0px;
-    height: 0px;
-    background-color: transparent;
-    border: 0;
-  }
-  
-  footer {
-    border-top: 1px solid var(--secondary-color);
-    padding: 20px;
-  }
-  
-  footer button {
-    color: var(--background-color);
-    border-radius: 2px;
-    cursor: pointer;
-    display: inline-block;
-    font-size: var(--font-size-small);
-    font-weight: bold;
-    height: 30px;
-    line-height: 16px;
-    width: 80px;
-    padding: 6px 8px 5px;
-    text-align: center;
-    transition: all 0.218s;
-    text-transform: uppercase;
-  }
-  
-  #playButton {
-    background-color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-  }
-  
-  #playButton:hover {
-    background-color: #1B66C9;
-    border: 1px solid #1B66C9;
-  }
-  
-  #resetButton {
-    margin-left: 16px;
-    background-color: #bdc1c6;
-    border: 1px solid var(--secondary-color);
-  }
-  
-  #resetButton:hover {
-    color: #bdc1c6;
-    background-color: #171717;
-    border: 1px solid #050607;
-  }
