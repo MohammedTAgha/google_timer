@@ -1,95 +1,74 @@
-// Get the necessary elements
-const timerTab = document.getElementById("timer");
-const stopwatchTab = document.getElementById("stopwatch");
-const timerSection = document.getElementById("timerSection");
-const stopwatchSection = document.getElementById("stopwatchSection");
-const timerInput = document.getElementById("timerInput");
-const playButton = document.getElementById("playButton");
-const resetButton = document.getElementById("resetButton");
-
-// Set initial state
-let timerActive = false;
+// Variables to store the timer state
 let timerInterval;
-let time = 0;
+let totalTime = 0;
+let remainingTime = 0;
 
-// Event listeners
-timerTab.addEventListener("click", switchToTimer);
-stopwatchTab.addEventListener("click", switchToStopwatch);
-playButton.addEventListener("click", toggleTimer);
-resetButton.addEventListener("click", resetTimer);
-
-// Switch to the Timer section
-function switchToTimer() {
-  timerTab.classList.add("activeTab");
-  stopwatchTab.classList.remove("activeTab");
-  timerSection.style.display = "block";
-  stopwatchSection.style.display = "none";
-}
-
-// Switch to the Stopwatch section
-function switchToStopwatch() {
-  timerTab.classList.remove("activeTab");
-  stopwatchTab.classList.add("activeTab");
-  timerSection.style.display = "none";
-  stopwatchSection.style.display = "block";
-}
-
-// Toggle the timer (Start/Pause)
-function toggleTimer() {
-  if (!timerActive) {
-    startTimer();
-  } else {
-    pauseTimer();
-  }
-}
+// Elements
+const timerElement = document.getElementById('timer');
+const hoursInput = document.getElementById('hours-input');
+const minutesInput = document.getElementById('minutes-input');
+const secondsInput = document.getElementById('seconds-input');
+const startButton = document.getElementById('start-btn');
+const pauseButton = document.getElementById('pause-btn');
+const resetButton = document.getElementById('reset-btn');
 
 // Start the timer
-function startTimer() {
-  const timeParts = timerInput.value.split(":");
-  const hours = parseInt(timeParts[0]) || 0;
-  const minutes = parseInt(timeParts[1]) || 0;
-  const seconds = parseInt(timeParts[2]) || 0;
+startButton.addEventListener('click', () => {
+  const hours = parseInt(hoursInput.value) || 0;
+  const minutes = parseInt(minutesInput.value) || 0;
+  const seconds = parseInt(secondsInput.value) || 0;
 
-  time = hours * 3600 + minutes * 60 + seconds;
+  totalTime = hours * 3600 + minutes * 60 + seconds;
+  remainingTime = totalTime;
 
-  if (time > 0) {
-    timerActive = true;
-    playButton.textContent = "Pause";
+  if (totalTime > 0) {
+    startButton.disabled = true;
+    pauseButton.disabled = false;
+    resetButton.disabled = false;
     timerInterval = setInterval(updateTimer, 1000);
   }
-}
+});
 
 // Pause the timer
-function pauseTimer() {
-  timerActive = false;
-  playButton.textContent = "Resume";
+pauseButton.addEventListener('click', () => {
   clearInterval(timerInterval);
-}
+  startButton.disabled = false;
+  pauseButton.disabled = true;
+});
+
+// Reset the timer
+resetButton.addEventListener('click', () => {
+  clearInterval(timerInterval);
+  startButton.disabled = false;
+  pauseButton.disabled = true;
+  resetButton.disabled = true;
+  totalTime = 0;
+  remainingTime = 0;
+  timerElement.textContent = '00:00:00';
+  hoursInput.value = '';
+  minutesInput.value = '';
+  secondsInput.value = '';
+});
 
 // Update the timer display
 function updateTimer() {
-  if (time <= 0) {
+  remainingTime--;
+
+  if (remainingTime <= 0) {
     clearInterval(timerInterval);
-    timerActive = false;
-    playButton.textContent = "Start";
-    return;
+    timerElement.textContent = '00:00:00';
+    startButton.disabled = false;
+    pauseButton.disabled = true;
+  } else {
+    const hours = Math.floor(remainingTime / 3600);
+    const minutes = Math.floor((remainingTime % 3600) / 60);
+    const seconds = remainingTime % 60;
+
+    timerElement.textContent = formatTime(hours) + ':' + formatTime(minutes) + ':' + formatTime(seconds);
   }
-
-  time--;
-  const hours = Math.floor(time / 3600);
-  const minutes = Math.floor((time % 3600) / 60);
-  const seconds = time % 60;
-
-  timerInput.value = `${padTime(hours)}:${padTime(minutes)}:${padTime(seconds)}`;
 }
 
-// Reset the timer
-function resetTimer() {
-  pauseTimer();
-  timerInput.value = "";
-}
-
-// Helper function to pad single-digit time values with leading zeros
-function padTime(time) {
-  return time.toString().padStart(2, "0");
+// Format the time values with leading zeros
+function formatTime(value) {
+  return value < 10 ? '0' + value : value;
 }
