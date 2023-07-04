@@ -1,0 +1,78 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Google Timer</title>
+    <!-- <script src="./script.js"></script> -->
+</head>
+
+<body>
+
+    <!-- Main content -->
+    <main>
+        <!-- Header with tabs -->
+        <header>
+            <ul class="timerTabs">
+                <li id="timertap" class="activeTab">Timer</li>
+                <li id="stopwatch">Stopwatch</li>
+            </ul>
+        </header>
+
+        <!-- Content section with timer and stopwatch -->
+        <section class="timerContent">
+            <!-- Timer section -->
+
+            <article id="timerSection">
+                <h1 id="timer"></h1>
+                <label for="timerInput" class="timeInputLabel">
+
+                    <!-- new  -->
+
+
+                    <!-- old  -->
+                    <span class="hours unit">
+                        <input  class="num" id="hours-input">
+                        <span class="char">h</span>
+                    </span>
+                    <span class="minutes unit">
+                        <input class="num" id="minutes-input">
+
+                        <span class="char">m</span>
+                    </span>
+                    <span class="seconds unit">
+                        <input class="num" id="seconds-input">
+
+                        <span class="char">s</span>
+                    </span>
+                </label>
+                <input type="text" maxlength="6" id="timerInput" value="">
+            </article>
+
+            <!-- Stopwatch section -->
+            <article id="stopwatchSection"></article>
+        </section>
+
+        <!-- Footer with buttons -->
+        <footer>
+            <section class="timerButtons">
+                <button id="start-btn">Start</button>
+                <button id="pause-btn">Pause</button>
+                <button id="reset-btn">Reset</button>
+                <!-- <button id="playButton" data-state="play">Start</button>
+        <button id="resetButton">Reset</button> -->
+            </section>
+        </footer>
+    </main>
+
+    <!-- JavaScript file -->
+    <script src="./script.js"></script>
+</body>
+
+</html>

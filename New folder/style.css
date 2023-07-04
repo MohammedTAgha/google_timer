@@ -71,12 +71,7 @@
   }
   
   .timeInputLabel .num {
-    font-size: 26px;
-    width: 48px;
-    background-color: transparent !important;
-    border: none !important;
-    outline: none !important;
-    color:  #e8eaed ;
+    font-size: var(--font-size-large);
   }
   
   .timeInputLabel .char {
@@ -120,23 +115,23 @@
     text-transform: uppercase;
   }
   
-  #start-btn {
+  #playButton {
     background-color: var(--primary-color);
     border: 1px solid var(--primary-color);
   }
   
-  #start-btn:hover {
+  #playButton:hover {
     background-color: #1B66C9;
     border: 1px solid #1B66C9;
   }
   
-  #reset-btn {
+  #resetButton {
     margin-left: 16px;
     background-color: #bdc1c6;
     border: 1px solid var(--secondary-color);
   }
   
-  #pause-btn:hover {
+  #resetButton:hover {
     color: #bdc1c6;
     background-color: #171717;
     border: 1px solid #050607;
